@@ -1,12 +1,17 @@
 <resources>
     <string name="app_name">PigeonDB</string>
     <string name="title_activity_tabbetdlayout">TabbetdlayoutActivity</string>
-    <string name="tab1">Information</string>
+    <string name="tab1">Pigeons</string>
     <string name="tab2">Pairs</string>
     <string name="tab3">"Diseases</string>
 
     <string name="title_activity_fullscreen">FullscreenActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string-array name="BreedingStatus">
+        <item>Hatched</item>
+        <item>Did not hatch</item>
+    </string-array>
 
 </resources>
