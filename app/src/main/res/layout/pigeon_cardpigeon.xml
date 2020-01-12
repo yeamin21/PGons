@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linear"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#37474f"
+    android:orientation="vertical">
+
+    <com.google.android.material.card.MaterialCardView
+        style="@style/Widget.MaterialComponents.CardView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/mtrl_card_spacing"
+        android:layout_marginTop="@dimen/mtrl_card_spacing"
+        android:layout_marginRight="@dimen/mtrl_card_spacing"
+        android:minHeight="200dp">
+
+        <!-- Card contents. -->
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteX="1dp">
+
+            <TextView
+                android:id="@+id/pgnNO"
+                android:layout_width="192sp"
+                android:layout_height="34dp"
+                android:layout_marginTop="8dp"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toStartOf="@+id/expand_pigeon"
+                app:layout_constraintHorizontal_bias="0.767"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/circlImg" />
+
+            <ImageView
+                android:id="@+id/circlImg"
+                android:layout_width="match_parent"
+                android:layout_height="182dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars[3]" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/expandable_pigeon"
+                android:layout_width="match_parent"
+                android:layout_height="305dp"
+
+
+                android:layout_marginTop="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/expand_pigeon">
+
+                <TextView
+                    android:id="@+id/txt_gender"
+                    android:layout_width="152sp"
+                    android:layout_height="42sp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="84dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_grp" />
+
+                <TextView
+                    android:id="@+id/txt_grp"
+                    android:layout_width="152sp"
+                    android:layout_height="42sp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="84dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_mtr" />
+
+                <TextView
+                    android:id="@+id/txt_mtr"
+                    android:layout_width="152sp"
+                    android:layout_height="42sp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="84dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_ftpgn" />
+
+                <TextView
+                    android:id="@+id/txt_ftpgn"
+                    android:layout_width="152sp"
+                    android:layout_height="42sp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="84dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/button3"
+                    android:layout_width="48sp"
+                    android:layout_height="48sp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@android:drawable/ic_menu_delete"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <Button
+                android:id="@+id/expand_pigeon"
+                android:layout_width="42sp"
+                android:layout_height="34sp"
+                android:layout_marginEnd="36dp"
+                android:background="@drawable/arrow_down"
+                app:layout_constraintBottom_toBottomOf="@+id/pgnNO"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/pgnNO" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</RelativeLayout>

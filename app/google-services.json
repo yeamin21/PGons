@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "751151305224",
+    "firebase_url": "https://pigeondb-fc777.firebaseio.com",
+    "project_id": "pigeondb-fc777",
+    "storage_bucket": "pigeondb-fc777.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:751151305224:android:638ea98222c1b07de837bd",
+        "android_client_info": {
+          "package_name": "com.hoyt.pigeondb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "751151305224-o977se761324gi0jvu72hvs5d84891kh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hoyt.pigeondb",
+            "certificate_hash": "e1b72aa6ecc0ac537ad3d3249e7299dfd09be72d"
+          }
+        },
+        {
+          "client_id": "751151305224-ebstbt5cu432ao618e9lq35n2fbuh53p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hoyt.pigeondb",
+            "certificate_hash": "3fcdfbe734ab66371965e237f678f4c10592099e"
+          }
+        },
+        {
+          "client_id": "751151305224-u4lhkhrp8bnq8s5ktd4ravfht44ckoqc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAYt_BYe4KnoFxxE2msa_ltdGhhW7R4E4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "751151305224-u4lhkhrp8bnq8s5ktd4ravfht44ckoqc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
