@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#E4E3E3">
@@ -48,8 +49,8 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/expandable_breeding"
-                android:layout_width="match_parent"
-                android:layout_height="169dp"
+                android:layout_width="398dp"
+                android:layout_height="181dp"
                 android:layout_marginTop="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -69,10 +70,10 @@
 
                 <Spinner
                     android:id="@+id/spinner"
-                    android:layout_width="185dp"
-                    android:layout_height="41dp"
-                    android:layout_marginEnd="168dp"
-                    android:layout_marginBottom="96dp"
+                    android:layout_width="175dp"
+                    android:layout_height="37dp"
+                    android:layout_marginEnd="152dp"
+                    android:layout_marginBottom="88dp"
                     android:entries="@array/BreedingStatus"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
@@ -81,14 +82,35 @@
                     android:id="@+id/btn_update"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="48dp"
-                    android:layout_marginTop="25dp"
+                    android:layout_marginStart="96dp"
                     android:layout_marginBottom="24dp"
                     android:text="@string/common_google_play_services_update_button"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <EditText
+                    android:id="@+id/txt_pickDate"
+                    android:layout_width="175sp"
+                    android:layout_height="40sp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="152dp"
+                    android:editable="false"
+                    android:ems="10"
+                    android:text="Pick Date"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_width="40sp"
+                    android:layout_height="40sp"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_pickDate"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/spinner"
-                    app:layout_constraintVertical_bias="1.0" />
+                    app:layout_constraintTop_toTopOf="@+id/txt_pickDate"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@drawable/ic_calendar" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <ImageView
