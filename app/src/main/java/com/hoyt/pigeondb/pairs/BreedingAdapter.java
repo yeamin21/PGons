@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -51,13 +52,14 @@ public class BreedingAdapter extends RecyclerView.Adapter<BreedingAdapter.Breedi
 
 
     public class BreedingHolder extends RecyclerView.ViewHolder {
-        Button expand;
+        Button expand,update;
         TextView breedingdate;
         ConstraintLayout expandable;
         View itemView;
         EditText picker;
         Calendar cl;
         int mYear, mDay, mMonth;
+        Spinner breedingstatus;
 
         public BreedingHolder(@NonNull View itemView) {
             super(itemView);
@@ -70,6 +72,8 @@ public class BreedingAdapter extends RecyclerView.Adapter<BreedingAdapter.Breedi
             mYear = cl.get(Calendar.YEAR);
             mMonth = cl.get(Calendar.MONTH);
             mDay = cl.get(Calendar.DAY_OF_MONTH);
+            update=itemView.findViewById(R.id.btn_update);
+            breedingstatus=itemView.findViewById(R.id.spnr_breedingStatus);
 
         }
 
@@ -94,6 +98,13 @@ public class BreedingAdapter extends RecyclerView.Adapter<BreedingAdapter.Breedi
                           picker.setText(dayOfMonth + "-" + month + 1 + "-" + year);
                         }
                     }, mYear, mMonth, mDay).show();
+                }
+            });
+            update.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    System.out.println(picker.getText().toString()+" "+breedingstatus.getSelectedItem().toString());
+
                 }
             });
         }
