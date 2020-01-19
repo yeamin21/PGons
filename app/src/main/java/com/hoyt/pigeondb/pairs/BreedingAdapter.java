@@ -15,10 +15,15 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.hoyt.pigeondb.R;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 public class BreedingAdapter extends RecyclerView.Adapter<BreedingAdapter.BreedingHolder> {
 
@@ -53,7 +58,7 @@ public class BreedingAdapter extends RecyclerView.Adapter<BreedingAdapter.Breedi
 
     public class BreedingHolder extends RecyclerView.ViewHolder {
         Button expand,update;
-        TextView breedingdate;
+        TextView breedingdate,hatchingdate,status;
         ConstraintLayout expandable;
         View itemView;
         EditText picker;
@@ -74,12 +79,13 @@ public class BreedingAdapter extends RecyclerView.Adapter<BreedingAdapter.Breedi
             mDay = cl.get(Calendar.DAY_OF_MONTH);
             update=itemView.findViewById(R.id.btn_update);
             breedingstatus=itemView.findViewById(R.id.spnr_breedingStatus);
+            status=itemView.findViewById(R.id.status);
 
         }
 
-        void bind(Eggs eg) {
+        void bind(final Eggs eg) {
             breedingdate.setText(eg.getLaying());
-
+status.setText(eg.getStatus()+ "  "+ eg.getHatching());
             expand.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -103,7 +109,11 @@ public class BreedingAdapter extends RecyclerView.Adapter<BreedingAdapter.Breedi
             update.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    System.out.println(picker.getText().toString()+" "+breedingstatus.getSelectedItem().toString());
+                    DatabaseReference rf =FirebaseDatabase.getInstance().getReference(FirebaseAuth.getInstance().getUid()).child("Pairs").child("Yyy+Xxx").child("Breeding").child("-Lyv7yiIIBNSOL75BACN");
+                    Map<String, Object> mHashmap = new HashMap<>();
+                    mHashmap.put("/hatching", picker.getText().toString());
+                    mHashmap.put("/status",breedingstatus.getSelectedItem().toString());
+                    rf.updateChildren(mHashmap);
 
                 }
             });

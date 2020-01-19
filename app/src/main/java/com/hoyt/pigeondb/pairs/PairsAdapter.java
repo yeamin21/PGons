@@ -93,7 +93,7 @@ public class PairsAdapter extends RecyclerView.Adapter<PairsAdapter.PairsHolder>
 
             tf.setText(pn.getFatherPGN());
             tm.setText(pn.getMotherPGN());
-            rf = FirebaseDatabase.getInstance().getReference(FirebaseAuth.getInstance().getUid()).child("Pairs").child(pn.getFatherPGN() + "+" + pn.getMotherPGN()).child("Breeding");
+            rf = FirebaseDatabase.getInstance().getReference(FirebaseAuth.getInstance().getUid()).child("Pairs");;
             date_picker.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -142,7 +142,7 @@ public class PairsAdapter extends RecyclerView.Adapter<PairsAdapter.PairsHolder>
                 @Override
                 public void onClick(View v) {
                     String layingDate = date_picker.getText().toString();
-                    Eggs egg = new Eggs(layingDate);
+                    Eggs egg = new Eggs(layingDate,null,null);
                     rf.push().setValue(egg);
                 }
             });
