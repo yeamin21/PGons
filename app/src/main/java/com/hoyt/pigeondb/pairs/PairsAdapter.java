@@ -142,8 +142,7 @@ public class PairsAdapter extends RecyclerView.Adapter<PairsAdapter.PairsHolder>
                 @Override
                 public void onClick(View v) {
                     String layingDate = date_picker.getText().toString();
-                    Eggs egg = new Eggs(layingDate);
-                    rf.push().setValue(egg);
+                    rf.push().child("laying").setValue(layingDate);
                 }
             });
 

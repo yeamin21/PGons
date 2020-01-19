@@ -2,22 +2,16 @@ package com.hoyt.pigeondb.pairs;;
 
 public class Eggs {
     private String laying;
-
-    public Eggs(String hatching, String status) {
-        this.hatching = hatching;
-        this.status = status;
-    }
-
     private String hatching;
     private String status;
 
     public Eggs() {
     }
-    public  Eggs(String laying)
-    {
+    public Eggs(String laying,String hatching, String status) {
+        this.hatching = hatching;
+        this.status = status;
         this.laying=laying;
     }
-
     public String getStatus() {
         return status;
     }

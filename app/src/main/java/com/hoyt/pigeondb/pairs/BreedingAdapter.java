@@ -16,8 +16,11 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.hoyt.pigeondb.R;
 
 import java.util.ArrayList;
@@ -106,17 +109,33 @@ status.setText(eg.getStatus()+ "  "+ eg.getHatching());
                     }, mYear, mMonth, mDay).show();
                 }
             });
-            /*update.setOnClickListener(new View.OnClickListener() {
+            update.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    DatabaseReference rf =FirebaseDatabase.getInstance().getReference(FirebaseAuth.getInstance().getUid()).child("Pairs").child("Yyy+Xxx").child("Breeding").child("-Lyv7yiIIBNSOL75BACN");
-                    Map<String, Object> mHashmap = new HashMap<>();
+                    DatabaseReference rf =FirebaseDatabase.getInstance().getReference(FirebaseAuth.getInstance().getUid()).child("Pairs");
+                    rf.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                           for (DataSnapshot dataSnapshot1: dataSnapshot.getChildren())
+                           {
+                            String x= (String)dataSnapshot1.getKey().toString();
+
+                           }
+                        }
+
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+                   /* Map<String, Object> mHashmap = new HashMap<>();
                     mHashmap.put("/hatching", picker.getText().toString());
                     mHashmap.put("/status",breedingstatus.getSelectedItem().toString());
-                    rf.updateChildren(mHashmap);
+                    rf.updateChildren(mHashmap);*/
 
                 }
-            });*/
+            });
         }
     }
 }
