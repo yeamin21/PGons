@@ -117,7 +117,7 @@ status.setText(eg.getStatus()+ "  "+ eg.getHatching());
             update.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    System.out.println(eg.getKey());
                    /*
 
                     Map<String, Object> p = new HashMap<>();
