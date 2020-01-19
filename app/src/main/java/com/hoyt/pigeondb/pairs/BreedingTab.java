@@ -37,7 +37,7 @@ public class BreedingTab extends AppCompatActivity {
         Intent i = getIntent();
 
         pp = findViewById(R.id.txt_maleP);
-        String pair = i.getStringExtra("PAIR");
+        final String pair = i.getStringExtra("PAIR");
 
         rV = findViewById(R.id.recView);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
@@ -54,7 +54,7 @@ public class BreedingTab extends AppCompatActivity {
                     Eggs data = breedingSnap.getValue(Eggs.class);
                     eg.add(data);
                 }
-                pad = new BreedingAdapter(getParent(), eg);
+                pad = new BreedingAdapter(getParent(), eg,rf,pair);
                 rV.setAdapter(pad);
             }
 

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -30,12 +31,16 @@ import java.util.Map;
 
 public class BreedingAdapter extends RecyclerView.Adapter<BreedingAdapter.BreedingHolder> {
 
+   String pair;
     ArrayList<Eggs> eg;
     Context c;
+    DatabaseReference rf;
 
-    public BreedingAdapter(Context c, ArrayList<Eggs> eg) {
+    public BreedingAdapter(Context c, ArrayList<Eggs> eg,DatabaseReference rf,String pair) {
         this.c = c;
         this.eg = eg;
+     this.rf=rf;
+     this.pair=pair;
     }
 
     @NonNull
@@ -112,27 +117,13 @@ status.setText(eg.getStatus()+ "  "+ eg.getHatching());
             update.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    DatabaseReference rf =FirebaseDatabase.getInstance().getReference(FirebaseAuth.getInstance().getUid()).child("Pairs");
-                    rf.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                           for (DataSnapshot dataSnapshot1: dataSnapshot.getChildren())
-                           {
-                            String x= (String)dataSnapshot1.getKey().toString();
 
-                           }
-                        }
+                   /*
 
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                        }
-                    });
-                   /* Map<String, Object> mHashmap = new HashMap<>();
-                    mHashmap.put("/hatching", picker.getText().toString());
-                    mHashmap.put("/status",breedingstatus.getSelectedItem().toString());
-                    rf.updateChildren(mHashmap);*/
+                    Map<String, Object> p = new HashMap<>();
+                    p.put("/hatching", picker.getText().toString());
+                    p.put("/status",breedingstatus.getSelectedItem().toString());
+                    rf.updateChildren(p);*/
 
                 }
             });
