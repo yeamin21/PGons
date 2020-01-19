@@ -1,15 +1,20 @@
-package com.hoyt.pigeondb.pairs;
-
-import android.text.Editable;
+package com.hoyt.pigeondb.pairs;;
 
 public class Eggs {
-    private String laying, hatching,status;
+    private String laying;
+
+    public Eggs(String hatching, String status) {
+        this.hatching = hatching;
+        this.status = status;
+    }
+
+    private String hatching;
+    private String status;
 
     public Eggs() {
     }
-    public Eggs(String laying,String hatching, String status) {
-        this.hatching = hatching;
-        this.status = status;
+    public  Eggs(String laying)
+    {
         this.laying=laying;
     }
 
@@ -20,9 +25,6 @@ public class Eggs {
     public void setStatus(String status) {
         this.status = status;
     }
-
-
-
 
     public String getLaying() {
         return laying;

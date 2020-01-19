@@ -106,7 +106,7 @@ status.setText(eg.getStatus()+ "  "+ eg.getHatching());
                     }, mYear, mMonth, mDay).show();
                 }
             });
-            update.setOnClickListener(new View.OnClickListener() {
+            /*update.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     DatabaseReference rf =FirebaseDatabase.getInstance().getReference(FirebaseAuth.getInstance().getUid()).child("Pairs").child("Yyy+Xxx").child("Breeding").child("-Lyv7yiIIBNSOL75BACN");
@@ -116,7 +116,7 @@ status.setText(eg.getStatus()+ "  "+ eg.getHatching());
                     rf.updateChildren(mHashmap);
 
                 }
-            });
+            });*/
         }
     }
 }

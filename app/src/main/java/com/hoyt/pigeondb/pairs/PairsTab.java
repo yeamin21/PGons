@@ -39,7 +39,7 @@ public class PairsTab extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View Root = inflater.inflate(R.layout.all_pairs_fragment, container, false);
-        final DatabaseReference rf = FirebaseDatabase.getInstance().getReference(FirebaseAuth.getInstance().getUid()).child("Pairs");
+        DatabaseReference rf = FirebaseDatabase.getInstance().getReference(FirebaseAuth.getInstance().getUid()).child("Pairs");
         rf.keepSynced(true);
         i = new Intent(getActivity(), AddPair.class);
         rV = Root.findViewById(R.id.rView);
