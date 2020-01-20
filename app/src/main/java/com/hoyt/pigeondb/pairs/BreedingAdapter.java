@@ -117,13 +117,12 @@ status.setText(eg.getStatus()+ "  "+ eg.getHatching());
             update.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    System.out.println(eg.getKey());
-                   /*
+                  rf=  FirebaseDatabase.getInstance().getReference(FirebaseAuth.getInstance().getUid()).child("Pairs").child(pair).child("Breeding").child(eg.getKey());
 
                     Map<String, Object> p = new HashMap<>();
                     p.put("/hatching", picker.getText().toString());
                     p.put("/status",breedingstatus.getSelectedItem().toString());
-                    rf.updateChildren(p);*/
+                    rf.updateChildren(p);
 
                 }
             });
