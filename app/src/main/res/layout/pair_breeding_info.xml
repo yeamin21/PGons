@@ -53,6 +53,7 @@
                 android:layout_width="398dp"
                 android:layout_height="181dp"
                 android:layout_marginTop="20dp"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -64,7 +65,7 @@
                     android:layout_width="31dp"
                     android:layout_height="31dp"
                     android:layout_marginEnd="36dp"
-                    android:layout_marginBottom="32dp"
+                    android:layout_marginBottom="16dp"
                     android:background="@android:drawable/ic_menu_delete"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
@@ -82,13 +83,14 @@
 
                 <Button
                     android:id="@+id/btn_update"
-                    android:layout_width="86dp"
-                    android:layout_height="43dp"
+                    android:layout_width="78dp"
+                    android:layout_height="40dp"
                     android:layout_marginStart="152dp"
-                    android:layout_marginBottom="16dp"
                     android:text="@string/common_google_play_services_update_button"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/delete"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/delete" />
 
                 <EditText
                     android:id="@+id/txt_pickDate"
