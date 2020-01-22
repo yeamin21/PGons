@@ -61,7 +61,9 @@ public class PairsTab extends Fragment {
                 pair.clear();
                 for (DataSnapshot pairSnapshot : dataSnapshot.getChildren()) {
                     Pairs infoSnapshot = pairSnapshot.child("Info").getValue(Pairs.class);
+                    infoSnapshot.setPairsKey(pairSnapshot.getKey());
                     pair.add(infoSnapshot);
+
 
                 }
                 pad = new PairsAdapter(getActivity(), pair);

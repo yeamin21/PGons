@@ -3,7 +3,7 @@ package com.hoyt.pigeondb.pairs;
 public class Pairs {
 
 
-    private String fatherPGN, motherPGN, AssigningDate;
+    private String fatherPGN, motherPGN, AssigningDate,pairsKey;
 
     public Pairs() {
     }
@@ -12,6 +12,14 @@ public class Pairs {
         this.fatherPGN = fatherPGN;
         this.motherPGN = motherPGN;
         this.AssigningDate = assigningDate;
+    }
+
+    public String getPairsKey() {
+        return pairsKey;
+    }
+
+    public void setPairsKey(String pairsKey) {
+        this.pairsKey = pairsKey;
     }
 
     public String getFatherPGN() {

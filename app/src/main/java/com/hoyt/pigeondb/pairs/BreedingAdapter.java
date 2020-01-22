@@ -31,16 +31,16 @@ import java.util.Map;
 
 public class BreedingAdapter extends RecyclerView.Adapter<BreedingAdapter.BreedingHolder> {
 
-   String pair;
+    String pair;
     ArrayList<Eggs> eg;
     Context c;
     DatabaseReference rf;
 
-    public BreedingAdapter(Context c, ArrayList<Eggs> eg,DatabaseReference rf,String pair) {
+    public BreedingAdapter(Context c, ArrayList<Eggs> eg, DatabaseReference rf, String pair) {
         this.c = c;
         this.eg = eg;
-     this.rf=rf;
-     this.pair=pair;
+        this.rf = rf;
+        this.pair = pair;
     }
 
     @NonNull
@@ -65,8 +65,8 @@ public class BreedingAdapter extends RecyclerView.Adapter<BreedingAdapter.Breedi
 
 
     public class BreedingHolder extends RecyclerView.ViewHolder {
-        Button expand,update;
-        TextView breedingdate,hatchingdate,status;
+        Button expand, update;
+        TextView breedingdate, hatchingdate, status;
         ConstraintLayout expandable;
         View itemView;
         EditText picker;
@@ -80,20 +80,20 @@ public class BreedingAdapter extends RecyclerView.Adapter<BreedingAdapter.Breedi
             expand = itemView.findViewById(R.id.expand);
             expandable = itemView.findViewById(R.id.expandable_breeding);
             breedingdate = itemView.findViewById(R.id.txt_LayingDate);
-            picker = (EditText)itemView.findViewById(R.id.txt_pickDate);
+            picker = (EditText) itemView.findViewById(R.id.txt_pickDate);
             cl = Calendar.getInstance();
             mYear = cl.get(Calendar.YEAR);
             mMonth = cl.get(Calendar.MONTH);
             mDay = cl.get(Calendar.DAY_OF_MONTH);
-            update=itemView.findViewById(R.id.btn_update);
-            breedingstatus=itemView.findViewById(R.id.spnr_breedingStatus);
-            status=itemView.findViewById(R.id.status);
+            update = itemView.findViewById(R.id.btn_update);
+            breedingstatus = itemView.findViewById(R.id.spnr_breedingStatus);
+            status = itemView.findViewById(R.id.status);
 
         }
 
         void bind(final Eggs eg) {
             breedingdate.setText(eg.getLaying());
-status.setText(eg.getStatus()+ "  "+ eg.getHatching());
+            status.setText(eg.getStatus() + "  " + eg.getHatching());
             expand.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -109,7 +109,7 @@ status.setText(eg.getStatus()+ "  "+ eg.getHatching());
                     new DatePickerDialog(itemView.getContext(), new DatePickerDialog.OnDateSetListener() {
                         @Override
                         public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                          picker.setText(dayOfMonth + "-" + month + 1 + "-" + year);
+                            picker.setText(dayOfMonth + "-" + month + 1 + "-" + year);
                         }
                     }, mYear, mMonth, mDay).show();
                 }
@@ -117,11 +117,11 @@ status.setText(eg.getStatus()+ "  "+ eg.getHatching());
             update.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                  rf=  FirebaseDatabase.getInstance().getReference(FirebaseAuth.getInstance().getUid()).child("Pairs").child(pair).child("Breeding").child(eg.getKey());
+                    rf = FirebaseDatabase.getInstance().getReference(FirebaseAuth.getInstance().getUid()).child("Pairs").child(pair).child("Breeding").child(eg.getKey());
 
                     Map<String, Object> p = new HashMap<>();
                     p.put("/hatching", picker.getText().toString());
-                    p.put("/status",breedingstatus.getSelectedItem().toString());
+                    p.put("/status", breedingstatus.getSelectedItem().toString());
                     rf.updateChildren(p);
 
                 }
