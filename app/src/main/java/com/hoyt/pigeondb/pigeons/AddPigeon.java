@@ -82,7 +82,7 @@ public class AddPigeon extends AppCompatActivity {
                                 t.addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
-                                        Toast.makeText(getApplicationContext(), "Added", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
                                         finish();
                                         startActivity(i);
                                     }

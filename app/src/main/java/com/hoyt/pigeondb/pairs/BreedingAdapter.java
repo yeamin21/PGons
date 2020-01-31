@@ -5,23 +5,22 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.hoyt.pigeondb.R;
 
 import java.util.ArrayList;
@@ -80,7 +79,7 @@ public class BreedingAdapter extends RecyclerView.Adapter<BreedingAdapter.Breedi
             expand = itemView.findViewById(R.id.expand);
             expandable = itemView.findViewById(R.id.expandable_breeding);
             breedingdate = itemView.findViewById(R.id.txt_LayingDate);
-            picker = (EditText) itemView.findViewById(R.id.txt_pickDate);
+            picker = itemView.findViewById(R.id.txt_pickDate);
             cl = Calendar.getInstance();
             mYear = cl.get(Calendar.YEAR);
             mMonth = cl.get(Calendar.MONTH);
@@ -118,11 +117,20 @@ public class BreedingAdapter extends RecyclerView.Adapter<BreedingAdapter.Breedi
                 @Override
                 public void onClick(View v) {
                     rf = FirebaseDatabase.getInstance().getReference(FirebaseAuth.getInstance().getUid()).child("Pairs").child(pair).child("Breeding").child(eg.getKey());
-
                     Map<String, Object> p = new HashMap<>();
                     p.put("/hatching", picker.getText().toString());
                     p.put("/status", breedingstatus.getSelectedItem().toString());
-                    rf.updateChildren(p);
+                    rf.updateChildren(p).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Toast.makeText(itemView.getContext(), "Success", Toast.LENGTH_SHORT).show();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(itemView.getContext(), e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
 
                 }
             });
