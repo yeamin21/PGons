@@ -17,6 +17,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class PigeonAdapter extends RecyclerView.Adapter<PigeonAdapter.PigeonHolder> {
     ArrayList<Pigeons> pgn;
     Context cont;
@@ -45,7 +47,7 @@ public class PigeonAdapter extends RecyclerView.Adapter<PigeonAdapter.PigeonHold
     }
 
     public class PigeonHolder extends RecyclerView.ViewHolder {
-        ImageView imvw;
+        CircleImageView imvw;
         View itemView;
         TextView pgnNo, pgnF, pgnM, pgnG, pgnGr;
         Button expand;
@@ -61,6 +63,9 @@ public class PigeonAdapter extends RecyclerView.Adapter<PigeonAdapter.PigeonHold
             pgnM = itemView.findViewById(R.id.txt_mtr);
             pgnG = itemView.findViewById(R.id.txt_gender);
             pgnGr = itemView.findViewById(R.id.txt_grp);
+
+
+           /*
             expand = itemView.findViewById(R.id.expand_pigeon);
             expandable = itemView.findViewById(R.id.expandable_pigeon);
 
@@ -72,7 +77,7 @@ public class PigeonAdapter extends RecyclerView.Adapter<PigeonAdapter.PigeonHold
                     else if (expandable.getVisibility() == View.GONE)
                         expandable.setVisibility(View.VISIBLE);
                 }
-            });
+            }); */
         }
 
 
