@@ -10,21 +10,17 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class Login extends AppCompatActivity {
     FirebaseAuth fath;
     TextInputEditText email, password;
     Button login, signup;
     Intent i;
-    FirebaseUser user;
 
 
     @Override
@@ -46,17 +42,18 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 if (email.getText() != null && password.getText() != null) {
                     fath.signInWithEmailAndPassword(email.getText().toString().trim(), password.getText().toString().trim())
-                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                 @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if (task.isSuccessful()) {
-                                        startActivity(i);
-                                        finish();
-                                    } else {
-                                        System.out.println("NLOF");
-                                    }
+                                public void onSuccess(AuthResult authResult) {
+                                    startActivity(i);
+                                    finish();
                                 }
-                            });
+                            }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(Login.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
             }
         });
