@@ -15,6 +15,7 @@
         <activity android:name=".pairs.AddPair" />
         <activity android:name=".AddBreedingHistory" />
         <activity android:name=".TabbetdlayoutActivity" />
+        <activity android:name=".pigeons.PigeonsTab"/>
         <activity
             android:name=".Login"
             android:label="@string/app_name"

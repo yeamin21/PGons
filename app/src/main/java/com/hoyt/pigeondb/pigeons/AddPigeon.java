@@ -53,7 +53,6 @@ public class AddPigeon extends AppCompatActivity {
         txtPgnFID = findViewById(R.id.txt_pgnFather);
         rgGender = findViewById(R.id.rg_gender);
         imv = findViewById(R.id.pgnPic);
-        final Intent i = new Intent(this, PigeonsTab.class);
         bAddPigeon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,14 +76,19 @@ public class AddPigeon extends AppCompatActivity {
                             @Override
                             public void onSuccess(Uri uri) {
                                 url = uri.toString();
-                                Pigeons p = new Pigeons(PN, PG, GN, MID, FID, url);
+                                Pigeons p = new Pigeons();
+                                p.setPigeonID(PN);
+                                p.setGender(GN);
+                                p.setGroup(PG);
+                                p.setFathersID(FID);
+                                p.setMothersID(MID);
+                                p.setPicURL(url);
                                 Task t = ref.child(PN).child("Basic Info").setValue(p);
                                 t.addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
                                         Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
                                         finish();
-                                        startActivity(i);
                                     }
                                 }).addOnFailureListener(new OnFailureListener() {
                                     @Override

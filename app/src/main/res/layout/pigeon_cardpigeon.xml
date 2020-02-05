@@ -46,10 +46,11 @@
                 android:id="@+id/circlImg"
                 android:layout_width="156dp"
                 android:layout_height="164dp"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="14dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.428"
                 tools:srcCompat="@tools:sample/avatars[3]" />
 
             <TextView
@@ -62,8 +63,8 @@
 
             <TextView
                 android:id="@+id/txt_mtr"
-                android:layout_width="182sp"
-                android:layout_height="32sp"
+                android:layout_width="151dp"
+                android:layout_height="23dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
