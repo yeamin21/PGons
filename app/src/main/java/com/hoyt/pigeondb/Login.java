@@ -31,7 +31,8 @@ public class Login extends AppCompatActivity {
         password = findViewById(R.id.password);
         login = findViewById(R.id.button_login);
         signup = findViewById(R.id.button_signup);
-
+        fath = FirebaseAuth.getInstance();
+        i = new Intent(this, TabbetdlayoutActivity.class);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

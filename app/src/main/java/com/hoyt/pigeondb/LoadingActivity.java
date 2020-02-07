@@ -32,7 +32,7 @@ public class LoadingActivity extends AppCompatActivity {
 
 
         }
-},3000);
+},1000);
     }
 }
 
