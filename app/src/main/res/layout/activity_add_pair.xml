@@ -15,17 +15,18 @@
         android:layout_height="58dp"
         android:layout_marginBottom="20dp"
         android:hint="Male Pigeon"
+
         app:layout_constraintBottom_toTopOf="@+id/textInputLayout5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <com.google.android.material.textfield.TextInputEditText
-
+        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+            android:layout_marginLeft="8dp"
             android:id="@+id/txt_pgnFather"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:layout_editor_absoluteX="65dp"
-            tools:layout_editor_absoluteY="114dp"></com.google.android.material.textfield.TextInputEditText>
+            android:layout_height="match_parent">
+
+        </androidx.appcompat.widget.AppCompatAutoCompleteTextView>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -39,10 +40,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
             android:id="@+id/txt_pgnMother"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></com.google.android.material.textfield.TextInputEditText>
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
+            android:textSize="18sp"></androidx.appcompat.widget.AppCompatAutoCompleteTextView>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -59,6 +63,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/assDate"
 android:editable="false"
+          
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textColor="@color/colorPrimary" />
@@ -73,14 +78,5 @@ android:editable="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <AutoCompleteTextView
-        android:id="@+id/autoCompleteTextView"
-        android:layout_width="251dp"
-        android:layout_height="40dp"
-        app:layout_constraintBottom_toTopOf="@+id/textInputLayout4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
