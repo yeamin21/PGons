@@ -1,20 +1,28 @@
 package com.hoyt.pigeondb.pigeons;
 
 public class Pigeons {
-    private  String pigeonID, group, gender, mothersID, fathersID, picURL;
+    private  String pigeonID, group, gender, mothersID, fathersID, picURL,color;
 
     public Pigeons() {
 
     }
-    public Pigeons(String pigeonID, String group, String gender, String mothersID, String fathersID, String picURL) {
+    public Pigeons(String pigeonID, String group, String gender, String mothersID, String fathersID, String picURL,String color) {
         this.pigeonID = pigeonID;
         this.group = group;
         this.gender = gender;
         this.mothersID = mothersID;
         this.fathersID = fathersID;
         this.picURL = picURL;
+        this.color=color;
     }
 
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
 
     public String getPicURL() {
         return picURL;

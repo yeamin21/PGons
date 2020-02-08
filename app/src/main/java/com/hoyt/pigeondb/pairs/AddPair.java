@@ -21,14 +21,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.hoyt.pigeondb.R;
-import com.hoyt.pigeondb.pigeons.Pigeons;
+
 
 
 import java.util.ArrayList;
 import java.util.Calendar;
 
 public class AddPair extends AppCompatActivity {
-
+ArrayList<Suggest_Pigeon>sgP=new ArrayList<>();
 EditText asD;
     Button addpair;
     Calendar clndr;
@@ -46,7 +46,7 @@ EditText asD;
       rf = FirebaseDatabase.getInstance().getReference(FirebaseAuth.getInstance().getUid()).child("Pairs");
 rc = FirebaseDatabase.getInstance().getReference(FirebaseAuth.getInstance().getUid()).child("Pigeons");
 
-         final ArrayAdapter<String> adptrHen = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item);
+         final ArrayAdapter<String> adptrHen = new ArrayAdapter<>(this, R.layout.autocomplete_suggestionlist);
         final ArrayAdapter<String> adptrCock= new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item);
 
         clndr = Calendar.getInstance();
@@ -95,9 +95,15 @@ rc = FirebaseDatabase.getInstance().getReference(FirebaseAuth.getInstance().getU
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     String gender = ds.child("Basic Info").child("gender").getValue(String.class).trim();
                     String sug = ds.child("Basic Info").child("pigeonID").getValue(String.class).trim();
+                    String imgurl=ds.child("Basic Info").child("picURL").getValue(String.class).trim();
                     if(gender.equals("Hen"))
                     {
-                        adptrHen.add(sug);
+                        Suggest_Pigeon sg=new Suggest_Pigeon();
+                        sg.setGender(gender);
+                        sg.setId(sug);
+                        sg.setUrl(imgurl);
+                        sgP.add(sg);
+
                     }
                     else if (gender.equals("Cock"))
                     {

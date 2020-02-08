@@ -33,14 +33,14 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AddPigeon extends AppCompatActivity {
     Button bAddPigeon, bAddPhoto;
-    EditText txtPgnNo, txtPgnMID, txtPgnFID, txtPgnGrp;
+    EditText txtPgnNo, txtPgnMID, txtPgnFID, txtPgnGrp,txtPgnClr;
     RadioGroup rgGender;
     Intent i;
     DatabaseReference ref;
     StorageReference mStorageRef;
     Uri imgui;
     CircleImageView imv;
-    String url, PN, PG, MID, FID, GN;
+    String url, PN, PG, MID, FID, GN,PC;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +52,7 @@ public class AddPigeon extends AppCompatActivity {
         txtPgnMID = findViewById(R.id.txt_pgnMother);
         txtPgnFID = findViewById(R.id.txt_pgnFather);
         rgGender = findViewById(R.id.rg_gender);
+        txtPgnClr=findViewById(R.id.txt_pgnClr);
         imv = findViewById(R.id.pgnPic);
         bAddPigeon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +63,7 @@ public class AddPigeon extends AppCompatActivity {
                 int rbID = rgGender.getCheckedRadioButtonId();
                 RadioButton radioButtonSelected = findViewById(rbID);
                 PN = txtPgnNo.getText().toString().trim();
+                PC = txtPgnClr.getText().toString().trim();
                 PG = txtPgnGrp.getText().toString().trim();
                 MID = txtPgnMID.getText().toString().trim();
                 FID = txtPgnFID.getText().toString().trim();
@@ -83,6 +85,7 @@ public class AddPigeon extends AppCompatActivity {
                                 p.setFathersID(FID);
                                 p.setMothersID(MID);
                                 p.setPicURL(url);
+                                p.setColor(PC);
                                 Task t = ref.child(PN).child("Basic Info").setValue(p);
                                 t.addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
