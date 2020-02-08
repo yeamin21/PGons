@@ -20,7 +20,6 @@
         </activity>
         <activity android:name=".pairs.BreedingTab" />
         <activity android:name=".pairs.AddPair" />
-        <activity android:name=".AddBreedingHistory" />
         <activity android:name=".TabbetdlayoutActivity" />
         <activity android:name=".pigeons.PigeonsTab" />
         <activity android:name=".Login"/>

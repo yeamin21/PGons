@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -21,8 +22,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.hoyt.pigeondb.R;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 public class PairsAdapter extends RecyclerView.Adapter<PairsAdapter.PairsHolder> {
     @NonNull
@@ -59,12 +64,14 @@ public class PairsAdapter extends RecyclerView.Adapter<PairsAdapter.PairsHolder>
         TextView tm, tf;
         EditText date_picker;
         RecyclerView rV;
+        Date d1;
         CardView cardView;
         Button arrowBtn, add_new_egg, show_breeding;
         ConstraintLayout constraintLayout;
         Calendar cl;
         int mYear, mDay, mMonth;
         DatabaseReference rf;
+       SimpleDateFormat simpleDateFormat=new SimpleDateFormat("dd-MM-YYYY");
 
         public PairsHolder(@NonNull View itemView) {
 
@@ -98,11 +105,17 @@ public class PairsAdapter extends RecyclerView.Adapter<PairsAdapter.PairsHolder>
                 @Override
                 public void onClick(View v) {
                     new DatePickerDialog(c, new DatePickerDialog.OnDateSetListener() {
+
                         @Override
                         public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                            date_picker.setText(dayOfMonth + "-" + month + 1 + "-" + year);
+                            SimpleDateFormat simpleDateFormat=   new SimpleDateFormat("dd-MM-YYYY");
+                            Date d1=new Date((year-1900),month,dayOfMonth);
+                            date_picker.setText(simpleDateFormat.format(d1));
                         }
                     }, mYear, mMonth, mDay).show();
+
+
+
                 }
             });
             constraintLayout = itemView.findViewById(R.id.constraintLayout);
@@ -145,6 +158,7 @@ public class PairsAdapter extends RecyclerView.Adapter<PairsAdapter.PairsHolder>
                     rf.push().child("laying").setValue(layingDate);
                 }
             });
+
 
         }
 

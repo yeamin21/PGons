@@ -3,6 +3,7 @@ package com.hoyt.pigeondb.pairs;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -23,8 +24,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.hoyt.pigeondb.R;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -81,6 +84,7 @@ public class BreedingAdapter extends RecyclerView.Adapter<BreedingAdapter.Breedi
             breedingdate = itemView.findViewById(R.id.txt_LayingDate);
             picker = itemView.findViewById(R.id.txt_pickDate);
             cl = Calendar.getInstance();
+
             mYear = cl.get(Calendar.YEAR);
             mMonth = cl.get(Calendar.MONTH);
             mDay = cl.get(Calendar.DAY_OF_MONTH);
@@ -102,17 +106,21 @@ public class BreedingAdapter extends RecyclerView.Adapter<BreedingAdapter.Breedi
                         expandable.setVisibility(View.VISIBLE);
                 }
             });
-            picker.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    new DatePickerDialog(itemView.getContext(), new DatePickerDialog.OnDateSetListener() {
-                        @Override
-                        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                            picker.setText(dayOfMonth + "-" + month + 1 + "-" + year);
-                        }
-                    }, mYear, mMonth, mDay).show();
-                }
-            });
+picker.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        new DatePickerDialog(itemView.getContext(), new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+             SimpleDateFormat simpleDateFormat=   new SimpleDateFormat("dd-MM-YYYY");
+                Date d1=new Date((year-1900),month,dayOfMonth);
+                picker.setText(simpleDateFormat.format(d1));
+
+            }
+        }, mYear, mMonth, mDay).show();
+    }
+});
+
             update.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

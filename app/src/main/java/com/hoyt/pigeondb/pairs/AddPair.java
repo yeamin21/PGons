@@ -1,8 +1,10 @@
 package com.hoyt.pigeondb.pairs;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -13,6 +15,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -26,6 +30,7 @@ import com.hoyt.pigeondb.R;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class AddPair extends AppCompatActivity {
 ArrayList<Suggest_Pigeon>sgP=new ArrayList<>();
@@ -57,19 +62,24 @@ rc = FirebaseDatabase.getInstance().getReference(FirebaseAuth.getInstance().getU
         pF = findViewById(R.id.txt_pgnFather);
         pM = findViewById(R.id.txt_pgnMother);
         asD = findViewById(R.id.assDate);
+asD.setOnTouchListener(new View.OnTouchListener() {
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        if(event.getAction() == MotionEvent.ACTION_DOWN) {
+            new DatePickerDialog(AddPair.this, new DatePickerDialog.OnDateSetListener() {
+                @Override
+
+                public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                    asD.setText(dayOfMonth + "-" + (month + 1) + "-" + year);
 
 
-        asD.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new DatePickerDialog(AddPair.this, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        asD.setText(dayOfMonth + "-" + (month + 1) + "-" + year);
-                    }
-                }, mYear, mMonth, mDay).show();
-            }
-        });
+
+                }
+            }, mYear, mMonth, mDay).show();
+        }
+        return false;
+    }
+});
 
         addpair.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,7 +119,6 @@ rc = FirebaseDatabase.getInstance().getReference(FirebaseAuth.getInstance().getU
                     {
                        adptrCock.add(sug);
                     }
-//
 
                 }
 
@@ -127,7 +136,13 @@ rc = FirebaseDatabase.getInstance().getReference(FirebaseAuth.getInstance().getU
 
     }
 }
+class suggs extends ArrayAdapter{
 
+    public suggs(@NonNull Context context, int resource) {
+        super(context, resource);
+    }
+
+}
 
 
 

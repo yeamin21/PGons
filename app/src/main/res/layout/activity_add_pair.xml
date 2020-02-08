@@ -62,10 +62,9 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/assDate"
-android:editable="false"
-          
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:editable="false"
             android:textColor="@color/colorPrimary" />
     </com.google.android.material.textfield.TextInputLayout>
 

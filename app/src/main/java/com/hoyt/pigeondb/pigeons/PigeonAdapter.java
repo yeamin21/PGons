@@ -49,7 +49,7 @@ public class PigeonAdapter extends RecyclerView.Adapter<PigeonAdapter.PigeonHold
     public class PigeonHolder extends RecyclerView.ViewHolder {
         CircleImageView imvw;
         View itemView;
-        TextView pgnNo, pgnF, pgnM, pgnG, pgnGr;
+        TextView pgnNo, pgnF, pgnM, pgnG, pgnGr,pgnClr;
         Button expand;
         ConstraintLayout expandable;
 
@@ -63,8 +63,7 @@ public class PigeonAdapter extends RecyclerView.Adapter<PigeonAdapter.PigeonHold
             pgnM = itemView.findViewById(R.id.txt_mtr);
             pgnG = itemView.findViewById(R.id.txt_gender);
             pgnGr = itemView.findViewById(R.id.txt_grp);
-
-
+    pgnClr=itemView.findViewById(R.id.pgn_clr);
            /*
             expand = itemView.findViewById(R.id.expand_pigeon);
             expandable = itemView.findViewById(R.id.expandable_pigeon);
@@ -86,7 +85,7 @@ public class PigeonAdapter extends RecyclerView.Adapter<PigeonAdapter.PigeonHold
             pgnM.setText(pn.getMothersID());
             pgnG.setText(pn.getGender());
             pgnGr.setText(pn.getGroup());
-
+            pgnClr.setText(pn.getColor());
             pgnNo.setText(pn.getPigeonID());
             Picasso.get()
                     .load(pn.getPicURL())

@@ -22,7 +22,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="212dp"
             android:background="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -42,6 +42,54 @@
                 tools:layout_editor_absoluteY="250dp" />
 -->
 
+            <TextView
+                android:id="@+id/pgn_clr"
+                android:layout_width="166sp"
+                android:layout_height="32sp"
+                app:layout_constraintBottom_toTopOf="@+id/txt_ftpgn"
+                app:layout_constraintStart_toStartOf="@+id/txt_ftpgn"
+                app:layout_constraintTop_toBottomOf="@+id/txt_grp" />
+
+            <TextView
+                android:id="@+id/txt_mtr"
+                android:layout_width="166sp"
+                android:layout_height="32sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_ftpgn" />
+
+            <TextView
+                android:id="@+id/txt_ftpgn"
+                android:layout_width="166sp"
+                android:layout_height="32sp"
+                app:layout_constraintBottom_toTopOf="@+id/txt_mtr"
+                app:layout_constraintStart_toStartOf="@+id/txt_mtr"
+                app:layout_constraintTop_toBottomOf="@+id/pgn_clr" />
+
+            <TextView
+                android:id="@+id/txt_grp"
+                android:layout_width="166sp"
+                android:layout_height="32sp"
+                app:layout_constraintBottom_toTopOf="@+id/pgn_clr"
+                app:layout_constraintStart_toStartOf="@+id/pgn_clr"
+                app:layout_constraintTop_toBottomOf="@+id/txt_gender" />
+
+            <TextView
+                android:id="@+id/txt_gender"
+                android:layout_width="166sp"
+                android:layout_height="32sp"
+                app:layout_constraintBottom_toTopOf="@+id/txt_grp"
+                app:layout_constraintStart_toStartOf="@+id/txt_grp"
+                app:layout_constraintTop_toBottomOf="@+id/pgnNO" />
+
+            <TextView
+                android:id="@+id/pgnNO"
+                android:layout_width="166sp"
+                android:layout_height="32sp"
+                app:layout_constraintBottom_toTopOf="@+id/txt_gender"
+                app:layout_constraintStart_toStartOf="@+id/txt_gender"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/circlImg"
                 android:layout_width="156dp"
@@ -53,53 +101,10 @@
                 app:layout_constraintVertical_bias="0.428"
                 tools:srcCompat="@tools:sample/avatars[3]" />
 
-            <TextView
-                android:id="@+id/txt_gender"
-                android:layout_width="182sp"
-                android:layout_height="32sp"
-                app:layout_constraintBottom_toTopOf="@+id/txt_grp"
-                app:layout_constraintStart_toStartOf="@+id/txt_grp"
-                app:layout_constraintTop_toBottomOf="@+id/pgnNO" />
-
-            <TextView
-                android:id="@+id/txt_mtr"
-                android:layout_width="151dp"
-                android:layout_height="23dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_ftpgn" />
-
-            <TextView
-                android:id="@+id/txt_ftpgn"
-                android:layout_width="182sp"
-                android:layout_height="32sp"
-                app:layout_constraintBottom_toTopOf="@+id/txt_mtr"
-                app:layout_constraintStart_toStartOf="@+id/txt_mtr"
-                app:layout_constraintTop_toBottomOf="@+id/txt_grp" />
-
-            <TextView
-                android:id="@+id/txt_grp"
-                android:layout_width="182sp"
-                android:layout_height="32sp"
-                app:layout_constraintBottom_toTopOf="@+id/txt_ftpgn"
-                app:layout_constraintStart_toStartOf="@+id/txt_ftpgn"
-                app:layout_constraintTop_toBottomOf="@+id/txt_gender" />
-
-            <TextView
-                android:id="@+id/pgnNO"
-                android:layout_width="182sp"
-                android:layout_height="32sp"
-                android:layout_marginTop="16dp"
-                app:layout_constraintBottom_toTopOf="@+id/txt_gender"
-                app:layout_constraintStart_toStartOf="@+id/txt_gender"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <androidx.constraintlayout.widget.Barrier
                 android:id="@+id/barrier"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="166sp"
+                android:layout_height="32sp"
                 app:barrierDirection="left"
                 app:constraint_referenced_ids="pgnNO,txt_grp,txt_ftpgn,txt_mtr,txt_gender"
                 tools:layout_editor_absoluteX="487dp" />
