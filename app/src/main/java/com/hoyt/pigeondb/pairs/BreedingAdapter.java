@@ -2,6 +2,7 @@ package com.hoyt.pigeondb.pairs;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -96,7 +97,20 @@ public class BreedingAdapter extends RecyclerView.Adapter<BreedingAdapter.Breedi
 
         void bind(final Eggs eg) {
             breedingdate.setText(eg.getLaying());
-            status.setText(eg.getStatus() + "  " + eg.getHatching());
+
+
+            if(eg.getStatus().equals("Expected"))
+            {
+                status.setText("Expected Hatching"+ "  " + eg.getHatching());
+            }
+            else if(eg.getStatus().equals("Hatched"))
+            {
+                status.setText("Hatched on"+ "  " + eg.getHatching());
+            }
+
+
+
+
             expand.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -112,9 +126,11 @@ picker.setOnClickListener(new View.OnClickListener() {
         new DatePickerDialog(itemView.getContext(), new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-             SimpleDateFormat simpleDateFormat=   new SimpleDateFormat("dd-MM-YYYY");
-                Date d1=new Date((year-1900),month,dayOfMonth);
-                picker.setText(simpleDateFormat.format(d1));
+                SimpleDateFormat simpleDateFormat=   new SimpleDateFormat("dd-MM-YYYY");
+             Calendar cc=Calendar.getInstance();
+             cc.set(year,month,dayOfMonth);
+
+                picker.setText(simpleDateFormat.format(cc.getTime()));
 
             }
         }, mYear, mMonth, mDay).show();
@@ -125,7 +141,9 @@ picker.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     rf = FirebaseDatabase.getInstance().getReference(FirebaseAuth.getInstance().getUid()).child("Pairs").child(pair).child("Breeding").child(eg.getKey());
-                    Map<String, Object> p = new HashMap<>();
+
+
+                  Map<String, Object> p = new HashMap<>();
                     p.put("/hatching", picker.getText().toString());
                     p.put("/status", breedingstatus.getSelectedItem().toString());
                     rf.updateChildren(p).addOnSuccessListener(new OnSuccessListener<Void>() {

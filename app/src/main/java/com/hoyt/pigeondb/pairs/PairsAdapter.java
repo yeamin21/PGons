@@ -71,7 +71,7 @@ public class PairsAdapter extends RecyclerView.Adapter<PairsAdapter.PairsHolder>
         Calendar cl;
         int mYear, mDay, mMonth;
         DatabaseReference rf;
-       SimpleDateFormat simpleDateFormat=new SimpleDateFormat("dd-MM-YYYY");
+        String HatchingProbableDate;
 
         public PairsHolder(@NonNull View itemView) {
 
@@ -109,8 +109,13 @@ public class PairsAdapter extends RecyclerView.Adapter<PairsAdapter.PairsHolder>
                         @Override
                         public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                             SimpleDateFormat simpleDateFormat=   new SimpleDateFormat("dd-MM-YYYY");
-                            Date d1=new Date((year-1900),month,dayOfMonth);
-                            date_picker.setText(simpleDateFormat.format(d1));
+
+                            Calendar cc=Calendar.getInstance();
+                            cc.set(year,month,dayOfMonth);
+                            String date=simpleDateFormat.format(cc.getTime());
+                            cc.add(Calendar.DATE,18);
+                            HatchingProbableDate =simpleDateFormat.format(cc.getTime());
+                            date_picker.setText(date);
                         }
                     }, mYear, mMonth, mDay).show();
 
@@ -155,7 +160,12 @@ public class PairsAdapter extends RecyclerView.Adapter<PairsAdapter.PairsHolder>
                 @Override
                 public void onClick(View v) {
                     String layingDate = date_picker.getText().toString();
-                    rf.push().child("laying").setValue(layingDate);
+                    Eggs eg=new Eggs();
+
+                    eg.setLaying(layingDate);
+                    eg.setStatus("Expected");
+                    eg.setHatching(HatchingProbableDate);
+                    rf.push().setValue(eg);
                 }
             });
 

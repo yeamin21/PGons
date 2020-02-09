@@ -8,6 +8,11 @@ public class Eggs {
 
     public Eggs() {
     }
+    public Eggs(String laying, String hatching, String status) {
+        this.hatching = hatching;
+        this.status = status;
+        this.laying=laying;
+    }
 
     public String getKey() {
         return key;
@@ -17,11 +22,7 @@ public class Eggs {
         this.key = key;
     }
 
-    public Eggs(String laying, String hatching, String status) {
-        this.hatching = hatching;
-        this.status = status;
-        this.laying=laying;
-    }
+
     public String getStatus() {
         return status;
     }

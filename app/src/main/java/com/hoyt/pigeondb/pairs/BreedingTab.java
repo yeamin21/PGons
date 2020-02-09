@@ -51,8 +51,16 @@ public class BreedingTab extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 eg.clear();
                 for (DataSnapshot breedingSnap : dataSnapshot.getChildren()) {
-                    Eggs data = breedingSnap.getValue(Eggs.class);
+                    Eggs data=breedingSnap.getValue(Eggs.class);
                     data.setKey(breedingSnap.getKey());
+                    //Eggs data = new Eggs();
+//                   String l= breedingSnap.child("laying").getValue().toString();
+//                   String h=breedingSnap.child("hatching").getValue().toString();
+//                   String s=breedingSnap.child("status").getValue().toString();
+//
+//                      data.setHatching(h);
+//                    data.setStatus(s);
+//                    data.setLaying(l);
                     eg.add(data);
                 }
                 pad = new BreedingAdapter(getParent(), eg,rf,pair);
