@@ -105,7 +105,15 @@ public class BreedingAdapter extends RecyclerView.Adapter<BreedingAdapter.Breedi
             }
             else if(eg.getStatus().equals("Hatched"))
             {
-                status.setText("Hatched on"+ "  " + eg.getHatching());
+                status.setText("Hatched on "+ eg.getHatching());
+            }
+            else if(eg.getStatus().equals("Infertile"))
+            {
+                status.setText("Infertile, Checked on "+eg.getHatching());
+            }
+            else if(eg.getStatus().equals("Did not Hatch"))
+            {
+                status.setText("Did not Hatch on "+eg.getHatching());
             }
 
 

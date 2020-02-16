@@ -11,7 +11,8 @@
 
     <string-array name="BreedingStatus">
         <item>Hatched</item>
-        <item>Did not hatch</item>
+        <item>Did not Hatch</item>
+        <item>Infertile</item>
     </string-array>
 
 </resources>

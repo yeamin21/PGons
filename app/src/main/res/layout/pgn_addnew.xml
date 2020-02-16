@@ -11,6 +11,26 @@
 
     <com.google.android.material.textfield.TextInputLayout
 
+        android:id="@+id/textInputLayout7"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="282dp"
+        android:layout_height="58dp"
+        android:layout_marginBottom="76dp"
+        android:hint="Date of Birth"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="64dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txt_pgnDOB"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+
         android:id="@+id/textInputLayout4"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="282sp"
@@ -131,9 +151,10 @@
 
     <RadioGroup
         android:id="@+id/rg_gender"
-        android:layout_width="202dp"
-        android:layout_height="56dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="70dp"
+        android:gravity="end"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/b_addPigeon"
         app:layout_constraintEnd_toEndOf="parent"
@@ -142,30 +163,29 @@
 
         <RadioButton
             android:id="@+id/rb_hen"
-            android:layout_width="103dp"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="9dp"
+            style="@android:style/Widget.CompoundButton.RadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
+            android:button="@drawable/ic_woman"
             android:checked="false"
-            android:text="Hen"
             android:textSize="20sp" />
 
         <RadioButton
             android:id="@+id/rb_cock"
-            android:layout_width="93dp"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="19dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
             android:layout_marginBottom="15dp"
-            android:text="Cock"
-            android:textSize="20sp" />
+            android:button="@drawable/ic_male" />
 
     </RadioGroup>
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="67dp"
-        android:layout_height="56sp"
-        android:layout_marginStart="64dp"
+        android:layout_width="69dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="72dp"
         android:text="Gender"
         android:textAlignment="center"
         android:textSize="20sp"
@@ -174,7 +194,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/rg_gender"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/rg_gender"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <de.hdodenhof.circleimageview.CircleImageView
 

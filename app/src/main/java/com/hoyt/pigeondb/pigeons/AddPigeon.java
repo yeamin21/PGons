@@ -67,7 +67,14 @@ public class AddPigeon extends AppCompatActivity {
                 PG = txtPgnGrp.getText().toString().trim();
                 MID = txtPgnMID.getText().toString().trim();
                 FID = txtPgnFID.getText().toString().trim();
-                GN = radioButtonSelected.getText().toString().trim();
+            if(radioButtonSelected.equals(R.id.rb_hen))
+                {
+                 GN="Hen";
+                }
+            else if(radioButtonSelected.equals(R.id.rb_cock))
+            {
+                GN="Cock";
+            }
                 final StorageReference sref = mStorageRef.child(PN);
 
 
