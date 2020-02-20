@@ -2,7 +2,6 @@ package com.hoyt.pigeondb.pigeons;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,11 +24,11 @@ import com.hoyt.pigeondb.R;
 import java.util.ArrayList;
 
 public class PigeonsTab extends Fragment {
-    FloatingActionButton fb;
-    Intent i;
-    ArrayList<Pigeons> pg;
-    PigeonAdapter pgAd;
-    RecyclerView rV;
+    private FloatingActionButton fb;
+    private   Intent i;
+    private  ArrayList<Pigeons> pg;
+    private  PigeonAdapter pgAd;
+    private RecyclerView rV;
 
     @Nullable
     @Override
@@ -56,31 +55,6 @@ public class PigeonsTab extends Fragment {
                 }
                 pgAd = new PigeonAdapter(pg, getActivity());
                 rV.setAdapter(pgAd);
-                /* pgAd.setPListener(new PigeonAdapter.onPigeonClick() {
-                    @Override
-                    public void onPgnClick(Pigeons p) {
-                        Intent i=new Intent(getActivity(), SelectedPigeonInfo.class);
-
-                        String n=p.getPigeonID();
-                        String f=p.getFathersID();
-                        String m=p.getMothersID();
-                        String g=p.getGender();
-                        String gr=p.getGroup();
-                        String u=p.getPicURL();
-
-
-                        i.putExtra("PID",n);
-                        i.putExtra("FID",f);
-                        i.putExtra("MID",m);
-                        i.putExtra("PGN",g);
-                        i.putExtra("PGR",gr);
-                        i.putExtra("PUR",u);
-                        startActivity(i);
-
-
-                    }
-                }); */
-
 
             }
 
