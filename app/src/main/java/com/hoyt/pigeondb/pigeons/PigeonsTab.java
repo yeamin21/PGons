@@ -2,6 +2,7 @@ package com.hoyt.pigeondb.pigeons;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,7 +51,7 @@ public class PigeonsTab extends Fragment {
                 pg.clear();
                 for (DataSnapshot pigeonSnap : dataSnapshot.getChildren()) {
                     Pigeons p = pigeonSnap.child("Basic Info").getValue(Pigeons.class);
-
+                    p.setFkey(pigeonSnap.getKey());
                     pg.add(p);
                 }
                 pgAd = new PigeonAdapter(pg, getActivity());

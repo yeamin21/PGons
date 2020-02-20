@@ -68,7 +68,7 @@ public class BreedingAdapter extends RecyclerView.Adapter<BreedingAdapter.Breedi
 
 
     public class BreedingHolder extends RecyclerView.ViewHolder {
-        Button expand, update;
+        Button expand, update,dlt;
         TextView breedingdate, hatchingdate, status;
         ConstraintLayout expandable;
         View itemView;
@@ -83,6 +83,7 @@ public class BreedingAdapter extends RecyclerView.Adapter<BreedingAdapter.Breedi
             expand = itemView.findViewById(R.id.expand);
             expandable = itemView.findViewById(R.id.expandable_breeding);
             breedingdate = itemView.findViewById(R.id.txt_LayingDate);
+           dlt = itemView.findViewById(R.id.delete);
             picker = itemView.findViewById(R.id.txt_pickDate);
             cl = Calendar.getInstance();
 
@@ -96,8 +97,10 @@ public class BreedingAdapter extends RecyclerView.Adapter<BreedingAdapter.Breedi
         }
 
         void bind(final Eggs eg) {
-            breedingdate.setText(eg.getLaying());
+            rf = FirebaseDatabase.getInstance().getReference(FirebaseAuth.getInstance().getUid()).child("Pairs").child(pair).child("Breeding").child(eg.getKey());
 
+
+            breedingdate.setText(eg.getLaying());
 
             if(eg.getStatus().equals("Expected"))
             {
@@ -115,9 +118,17 @@ public class BreedingAdapter extends RecyclerView.Adapter<BreedingAdapter.Breedi
             {
                 status.setText("Did not Hatch on "+eg.getHatching());
             }
-
-
-
+dlt.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        rf.removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Toast.makeText(itemView.getContext(),"Deleted",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+});
 
             expand.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -148,7 +159,7 @@ picker.setOnClickListener(new View.OnClickListener() {
             update.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    rf = FirebaseDatabase.getInstance().getReference(FirebaseAuth.getInstance().getUid()).child("Pairs").child(pair).child("Breeding").child(eg.getKey());
+
 
 
                   Map<String, Object> p = new HashMap<>();

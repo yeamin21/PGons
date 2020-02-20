@@ -103,9 +103,9 @@ asD.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    String gender = ds.child("Basic Info").child("gender").getValue(String.class).trim();
-                    String sug = ds.child("Basic Info").child("pigeonID").getValue(String.class).trim();
-                    String imgurl=ds.child("Basic Info").child("picURL").getValue(String.class).trim();
+                    String gender = ds.child("Basic Info").child("gender").getValue(String.class);
+                    String sug = ds.child("Basic Info").child("pigeonID").getValue(String.class);
+                    String imgurl=ds.child("Basic Info").child("picURL").getValue(String.class);
                     if(gender.equals("Hen"))
                     {
                         Suggest_Pigeon sg=new Suggest_Pigeon();

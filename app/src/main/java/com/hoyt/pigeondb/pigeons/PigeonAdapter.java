@@ -7,11 +7,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.hoyt.pigeondb.R;
 import com.squareup.picasso.Picasso;
 
@@ -50,7 +55,7 @@ public class PigeonAdapter extends RecyclerView.Adapter<PigeonAdapter.PigeonHold
         CircleImageView imvw;
         View itemView;
         TextView pgnNo, pgnF, pgnM, pgnG, pgnGr,pgnClr;
-        Button expand;
+        Button delete;
         ConstraintLayout expandable;
 
         public PigeonHolder(@NonNull final View itemView) {
@@ -63,6 +68,8 @@ public class PigeonAdapter extends RecyclerView.Adapter<PigeonAdapter.PigeonHold
             pgnM = itemView.findViewById(R.id.txt_mtr);
             pgnG = itemView.findViewById(R.id.txt_gender);
             pgnGr = itemView.findViewById(R.id.txt_grp);
+            delete=itemView.findViewById(R.id.delete);
+
     pgnClr=itemView.findViewById(R.id.pgn_clr);
            /*
             expand = itemView.findViewById(R.id.expand_pigeon);
@@ -87,13 +94,30 @@ public class PigeonAdapter extends RecyclerView.Adapter<PigeonAdapter.PigeonHold
             pgnGr.setText(pn.getGroup());
             pgnClr.setText(pn.getColor());
             pgnNo.setText(pn.getPigeonID());
+            System.out.println(pn.getFkey());
             Picasso.get()
                     .load(pn.getPicURL())
                     .fit()
                     .centerCrop()
                     .into(imvw);
 
+
+            delete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    DatabaseReference rf = FirebaseDatabase.getInstance().getReference(FirebaseAuth.getInstance().getUid()).child("Pigeons").child(pn.getFkey());
+
+                    rf.removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Toast.makeText(itemView.getContext(),"Deleted",Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+            });
+
         }
+
 
 
     }

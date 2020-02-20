@@ -33,7 +33,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AddPigeon extends AppCompatActivity {
     Button bAddPigeon, bAddPhoto;
-    EditText txtPgnNo, txtPgnMID, txtPgnFID, txtPgnGrp,txtPgnClr;
+    EditText txtPgnNo, txtPgnMID, txtPgnFID, txtPgnGrp,txtPgnClr,txt_dob;
     RadioGroup rgGender;
     Intent i;
     DatabaseReference ref;
@@ -53,6 +53,7 @@ public class AddPigeon extends AppCompatActivity {
         txtPgnFID = findViewById(R.id.txt_pgnFather);
         rgGender = findViewById(R.id.rg_gender);
         txtPgnClr=findViewById(R.id.txt_pgnClr);
+        txt_dob=findViewById(R.id.txt_pgnDOB);
         imv = findViewById(R.id.pgnPic);
         bAddPigeon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,6 +76,10 @@ public class AddPigeon extends AppCompatActivity {
             {
                 GN="Cock";
             }
+            else if(radioButtonSelected.equals(R.id.rb_notsure))
+            {
+                GN="Unidentified";
+            }
                 final StorageReference sref = mStorageRef.child(PN);
 
 
@@ -93,7 +98,8 @@ public class AddPigeon extends AppCompatActivity {
                                 p.setMothersID(MID);
                                 p.setPicURL(url);
                                 p.setColor(PC);
-                                Task t = ref.child(PN).child("Basic Info").setValue(p);
+                                p.setDob(txt_dob.getText().toString());
+                                Task t = ref.push().child("Basic Info").setValue(p);
                                 t.addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {

@@ -3,6 +3,7 @@ package com.hoyt.pigeondb.pairs;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -40,6 +41,7 @@ public class BreedingTab extends AppCompatActivity {
         final String pair = i.getStringExtra("PAIR");
 
         rV = findViewById(R.id.recView);
+
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         rV.setLayoutManager(mLayoutManager);
         rf = FirebaseDatabase.getInstance().getReference(FirebaseAuth.getInstance().getUid()).child("Pairs").child(pair).child("Breeding");
@@ -57,8 +59,7 @@ public class BreedingTab extends AppCompatActivity {
 //                   String l= breedingSnap.child("laying").getValue().toString();
 //                   String h=breedingSnap.child("hatching").getValue().toString();
 //                   String s=breedingSnap.child("status").getValue().toString();
-//
-//                      data.setHatching(h);
+//                    data.setHatching(h);
 //                    data.setStatus(s);
 //                    data.setLaying(l);
                     eg.add(data);
@@ -66,6 +67,7 @@ public class BreedingTab extends AppCompatActivity {
                 pad = new BreedingAdapter(getParent(), eg,rf,pair);
                 rV.setAdapter(pad);
             }
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
