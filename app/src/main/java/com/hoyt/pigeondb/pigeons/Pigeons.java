@@ -7,30 +7,52 @@ public class Pigeons {
 
     }
 
-    public String getFkey() {
-        return fkey;
+    public String getPigeonID() {
+        return pigeonID;
     }
 
-    public void setFkey(String fkey) {
-        this.fkey = fkey;
-    }
-
-    public String getDob() {
-        return dob;
-    }
-
-    public void setDob(String dob) {
-        this.dob = dob;
-    }
-
-    public Pigeons(String pigeonID, String group, String gender, String mothersID, String fathersID, String picURL, String color) {
+    public void setPigeonID(String pigeonID) {
         this.pigeonID = pigeonID;
+    }
+
+    public String getGroup() {
+        return group;
+    }
+
+    public void setGroup(String group) {
         this.group = group;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public String getMothersID() {
+        return mothersID;
+    }
+
+    public void setMothersID(String mothersID) {
         this.mothersID = mothersID;
+    }
+
+    public String getFathersID() {
+        return fathersID;
+    }
+
+    public void setFathersID(String fathersID) {
         this.fathersID = fathersID;
+    }
+
+    public String getPicURL() {
+        return picURL;
+    }
+
+    public void setPicURL(String picURL) {
         this.picURL = picURL;
-        this.color=color;
     }
 
     public String getColor() {
@@ -41,57 +63,19 @@ public class Pigeons {
         this.color = color;
     }
 
-    public String getPicURL() {
-        return picURL;
+    public String getDob() {
+        return dob;
     }
 
-    public Pigeons setPicURL(String picURL) {
-        this.picURL = picURL;
-        return this;
+    public void setDob(String dob) {
+        this.dob = dob;
     }
 
-    public String getPigeonID() {
-        return pigeonID;
+    public String getFkey() {
+        return fkey;
     }
 
-    public Pigeons setPigeonID(String pigeonID) {
-        this.pigeonID = pigeonID;
-        return this;
-    }
-
-    public String getGroup() {
-        return group;
-    }
-
-    public Pigeons setGroup(String group) {
-        this.group = group;
-        return this;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public Pigeons setGender(String gender) {
-        this.gender = gender;
-        return this;
-    }
-
-    public String getMothersID() {
-        return mothersID;
-    }
-
-    public Pigeons setMothersID(String mothersID) {
-        this.mothersID = mothersID;
-        return this;
-    }
-
-    public String getFathersID() {
-        return fathersID;
-    }
-
-    public Pigeons setFathersID(String fathersID) {
-        this.fathersID = fathersID;
-        return this;
+    public void setFkey(String fkey) {
+        this.fkey = fkey;
     }
 }

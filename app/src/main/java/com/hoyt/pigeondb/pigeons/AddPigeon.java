@@ -41,6 +41,7 @@ public class AddPigeon extends AppCompatActivity {
     Uri imgui;
     CircleImageView imv;
     String url, PN, PG, MID, FID, GN,PC;
+    int rbID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,27 +62,29 @@ public class AddPigeon extends AppCompatActivity {
                 mStorageRef = FirebaseStorage.getInstance().getReference(FirebaseAuth.getInstance().getUid()).child("PigeonPhotos");
                 ref = FirebaseDatabase.getInstance().getReference(FirebaseAuth.getInstance().getUid()).child("Pigeons");
                 ref.keepSynced(true);
-                int rbID = rgGender.getCheckedRadioButtonId();
-                RadioButton radioButtonSelected = findViewById(rbID);
                 PN = txtPgnNo.getText().toString().trim();
                 PC = txtPgnClr.getText().toString().trim();
                 PG = txtPgnGrp.getText().toString().trim();
                 MID = txtPgnMID.getText().toString().trim();
                 FID = txtPgnFID.getText().toString().trim();
-            if(radioButtonSelected.equals(R.id.rb_hen))
-                {
-                 GN="Hen";
-                }
-            else if(radioButtonSelected.equals(R.id.rb_cock))
-            {
-                GN="Cock";
-            }
-            else if(radioButtonSelected.equals(R.id.rb_notsure))
-            {
-                GN="Unidentified";
-            }
+
+
+
+rbID=rgGender.getCheckedRadioButtonId();
                 final StorageReference sref = mStorageRef.child(PN);
 
+                if(rbID==R.id.rb_hen)
+                {
+                    GN="Hen";
+                }
+                else if(rbID==R.id.rb_cock)
+                {
+                    GN="Cock";
+                }
+                else if(rbID==R.id.rb_notsure)
+                {
+                    GN="Unidentified";
+                }
 
                 sref.putFile(imgui).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
@@ -89,10 +92,11 @@ public class AddPigeon extends AppCompatActivity {
                         sref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {
+
                                 url = uri.toString();
                                 Pigeons p = new Pigeons();
                                 p.setPigeonID(PN);
-                                p.setGender(GN);
+                               p.setGender(GN);
                                 p.setGroup(PG);
                                 p.setFathersID(FID);
                                 p.setMothersID(MID);

@@ -25,7 +25,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.hoyt.pigeondb.R;
-
+import com.hoyt.pigeondb.pigeons.Pigeons;
 
 
 import java.util.ArrayList;
@@ -51,7 +51,7 @@ EditText asD;
       rf = FirebaseDatabase.getInstance().getReference(FirebaseAuth.getInstance().getUid()).child("Pairs");
 rc = FirebaseDatabase.getInstance().getReference(FirebaseAuth.getInstance().getUid()).child("Pigeons");
 
-         final ArrayAdapter<String> adptrHen = new ArrayAdapter<>(this, R.layout.autocomplete_suggestionlist);
+         final ArrayAdapter<String> adptrHen = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item);
         final ArrayAdapter<String> adptrCock= new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item);
 
         clndr = Calendar.getInstance();
@@ -106,22 +106,16 @@ asD.setOnTouchListener(new View.OnTouchListener() {
                     String gender = ds.child("Basic Info").child("gender").getValue(String.class);
                     String sug = ds.child("Basic Info").child("pigeonID").getValue(String.class);
                     String imgurl=ds.child("Basic Info").child("picURL").getValue(String.class);
-                    if(gender.equals("Hen"))
-                    {
-                        Suggest_Pigeon sg=new Suggest_Pigeon();
-                        sg.setGender(gender);
-                        sg.setId(sug);
-                        sg.setUrl(imgurl);
-                        sgP.add(sg);
 
-                    }
-                    else if (gender.equals("Cock"))
+                    if(gender.equals("Cock"))
                     {
-                       adptrCock.add(sug);
+                        adptrCock.add(sug);
                     }
-
+                    else if(gender.equals("Hen"))
+                    {
+                        adptrHen.add(sug);
+                    }
                 }
-
 
             }
 
@@ -131,17 +125,11 @@ asD.setOnTouchListener(new View.OnTouchListener() {
             }
         });
 
+
         pM.setAdapter(adptrHen);
         pF.setAdapter(adptrCock);
 
     }
-}
-class suggs extends ArrayAdapter{
-
-    public suggs(@NonNull Context context, int resource) {
-        super(context, resource);
-    }
-
 }
 
 

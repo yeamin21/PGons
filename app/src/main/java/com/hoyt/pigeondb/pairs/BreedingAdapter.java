@@ -97,7 +97,7 @@ public class BreedingAdapter extends RecyclerView.Adapter<BreedingAdapter.Breedi
         }
 
         void bind(final Eggs eg) {
-            rf = FirebaseDatabase.getInstance().getReference(FirebaseAuth.getInstance().getUid()).child("Pairs").child(pair).child("Breeding").child(eg.getKey());
+
 
 
             breedingdate.setText(eg.getLaying());
@@ -159,7 +159,7 @@ picker.setOnClickListener(new View.OnClickListener() {
             update.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    rf = FirebaseDatabase.getInstance().getReference(FirebaseAuth.getInstance().getUid()).child("Pairs").child(pair).child("Breeding").child(eg.getKey());
 
 
                   Map<String, Object> p = new HashMap<>();
